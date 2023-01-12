@@ -36,11 +36,12 @@ class LoginView : Fragment() {
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         _binding = FragmentLoginViewBinding.inflate(inflater,container,false)
 
-//        if( (prefs.getStoreTheme() == Constants.LIGHT_THEME)){
-//            _binding.ivLogo.setImageResource(R.drawable.sophos_day)
-//        }else{
-//            _binding.ivLogo.setImageResource(R.drawable.sophos_night)
-//        }
+        if( (prefs.getStoreTheme() == Constants.LIGHT_THEME)){
+            _binding.ivLogo.setImageResource(R.drawable.sophos_day)
+        }else{
+            _binding.ivLogo.setImageResource(R.drawable.sophos_night)
+        }
+
         _binding.btnLogin.setOnClickListener{
             email = _binding.etLoginEmail.text.toString().trim()
             password = _binding.etLoginPassword.text.toString().trim()
@@ -59,6 +60,19 @@ class LoginView : Fragment() {
             }
         }
 
+        _binding.btnFingerprintLogin.setOnClickListener(){
+            activity?.let { it -> viewModel.fingerPrintAuth(it) }
+            viewModel.userAuth.observe(viewLifecycleOwner){
+                user-> run {
+                    if(user!!.auth){
+                        Routing.goTo(activity as AppCompatActivity,HomeView())
+                        Toast.makeText(activity, "Validado", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(activity,"Invalid Credentials", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
         return binding.root
 
 

@@ -16,7 +16,12 @@ class Preferences (val context: Context){
     fun storeUserEmail(userEmail: String ){
         storage.edit().putString(Constants.SHARED_USER_EMAIL, userEmail).apply()
     }
-
+    fun getUsername(): String {
+        return storage.getString(Constants.SHARED_USER_NAME, "")!!
+    }
+    fun getUserEmail(): String {
+        return storage.getString(Constants.SHARED_USER_EMAIL, "")!!
+    }
     ///
 
 
