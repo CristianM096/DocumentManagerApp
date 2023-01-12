@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#3A275B</color>
+    <color name="primary_text_color">#3A275B</color>
+    <color name="main_text_color">#FFF</color>
+    <color name="login_text_color">#3A275B</color>
+</resources>
