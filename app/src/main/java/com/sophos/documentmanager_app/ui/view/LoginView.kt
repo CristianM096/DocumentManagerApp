@@ -34,48 +34,56 @@ class LoginView : Fragment() {
         // Inflate the layout for this fragment
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-        _binding = FragmentLoginViewBinding.inflate(inflater,container,false)
+        _binding = FragmentLoginViewBinding.inflate(inflater, container, false)
 
+        _binding.btnFingerprintLogin.setOnClickListener() {
+            loginFingerprint()
+        }
+        _binding.btnLogin.setOnClickListener {
+            loginCredentials()
+        }
+        validateTheme()
+        return binding.root
+    }
+
+    private fun loginCredentials() {
+        email = _binding.etLoginEmail.text.toString().trim()
+        password = _binding.etLoginPassword.text.toString().trim()
+        viewModel.login(email, password, activity as AppCompatActivity)
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            run {
+                if (user!!.access) {
+                    Routing.goTo(activity as AppCompatActivity, HomeView())
+                    Toast.makeText(activity, "Validado", Toast.LENGTH_SHORT).show()
+                    Log.d("Login", "Logeado")
+                } else {
+                    Toast.makeText(activity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                    Log.d("Login", "NO Logeado")
+                }
+            }
+        }
+    }
+
+    private fun loginFingerprint() {
+        activity?.let { it -> viewModel.fingerPrintAuth(it) }
+        viewModel.userAuth.observe(viewLifecycleOwner) { user ->
+            run {
+                if (user!!.auth) {
+                    Routing.goTo(activity as AppCompatActivity, HomeView())
+                    Toast.makeText(activity, "Validado", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun validateTheme(){
         if( (prefs.getStoreTheme() == Constants.LIGHT_THEME)){
             _binding.ivLogo.setImageResource(R.drawable.sophos_day)
         }else{
             _binding.ivLogo.setImageResource(R.drawable.sophos_night)
         }
-
-        _binding.btnLogin.setOnClickListener{
-            email = _binding.etLoginEmail.text.toString().trim()
-            password = _binding.etLoginPassword.text.toString().trim()
-            viewModel.login(email,password,activity as AppCompatActivity)
-            viewModel.userData.observe(viewLifecycleOwner){
-                user -> run {
-                    if (user!!.access){
-                        Routing.goTo(activity as AppCompatActivity, HomeView())
-                        Toast.makeText(activity, "Validado", Toast.LENGTH_SHORT).show()
-                        Log.d("Login","Logeado")
-                    } else {
-                        Toast.makeText(activity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
-                        Log.d("Login","NO Logeado")
-                    }
-                }
-            }
-        }
-
-        _binding.btnFingerprintLogin.setOnClickListener(){
-            activity?.let { it -> viewModel.fingerPrintAuth(it) }
-            viewModel.userAuth.observe(viewLifecycleOwner){
-                user-> run {
-                    if(user!!.auth){
-                        Routing.goTo(activity as AppCompatActivity,HomeView())
-                        Toast.makeText(activity, "Validado", Toast.LENGTH_SHORT).show()
-                    }else{
-                        Toast.makeText(activity,"Invalid Credentials", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
-        return binding.root
-
-
     }
 
 }

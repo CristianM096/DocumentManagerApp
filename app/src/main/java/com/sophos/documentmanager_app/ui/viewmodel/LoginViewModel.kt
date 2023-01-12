@@ -1,6 +1,5 @@
 package com.sophos.documentmanager_app.ui.viewmodel
 
-import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
@@ -9,17 +8,23 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.sophos.documentmanager_app.data.model.UserModel.UserModel
 import com.sophos.documentmanager_app.data.model.auth.Auth
 import com.sophos.documentmanager_app.data.network.service.UserService
 import com.sophos.documentmanager_app.utils.NonSuccessResponse
 import com.sophos.documentmanager_app.utils.UserApp.Companion.prefs
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Callback
 import java.util.concurrent.Executor
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel(){
+@HiltViewModel
+class LoginViewModel  @Inject constructor(
+): ViewModel(){
     private lateinit var executor: Executor
     private lateinit var biometricPromptInfo: BiometricPrompt.PromptInfo
     private lateinit var biometricPrompt: BiometricPrompt
@@ -36,7 +41,6 @@ class LoginViewModel : ViewModel(){
         if (validEmail){
             UserService().login(email,password).enqueue(object : Callback<UserModel>{
                 override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                    println(response  )
                     if (response.isSuccessful){
                         val responseBody = response.body()
                         if (responseBody!!.access){
