@@ -6,6 +6,12 @@
     <string name="Password">Contraseña</string>
     <string name="Login">Iniciar sesion</string>
     <string name="Finger_print">Ingresar con huella</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sophos_home_description">Imagen de bienvenida de Sophos</string>
+    <string name="welcome_text">Bienvenido</string>
+    <string name="options_text">Estas son las opciones \n que tenemos para ti</string>
+    <string name="Entry">Ingresar</string>
+    <string name="send_documents">Enviar documentos</string>
+    <string name="send_docs_text">Envio de documentación</string>
+    <string name="show_documents">Ver documentos</string>
+    <string name="office">Oficinas</string>
 </resources>

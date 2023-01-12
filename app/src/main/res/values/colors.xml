@@ -8,6 +8,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="first_card_color">#FE1191</color>
+    <color name="first_card_text">#FE1191</color>
+    <color name="first_card_fade_color">#FFFFFFFF</color>
+    <color name="first_card_btn_color">#FFF</color>
+    <color name="first_card_bg">#FFF</color>
+
+    <color name="second_card_color">#4500FF</color>
+    <color name="second_card_text">#4500FF</color>
+    <color name="second_card_bg">#FFF</color>
+    <color name="second_card_fade_color">#FFFFFFFF</color>
+    <color name="second_card_btn_color">#FFF</color>
+
+    <color name="third_card_color">#05667C</color>
+    <color name="third_card_text">#05667C</color>
+    <color name="third_card_fade_color">#FFFFFFFF</color>
+    <color name="third_card_btn_color">#FFFF</color>
+    <color name="third_card_bg">#FFF</color>
 
     <color name="background">#FFFFFFFF</color>
     <color name="primary_text_color">#7800FD</color>
