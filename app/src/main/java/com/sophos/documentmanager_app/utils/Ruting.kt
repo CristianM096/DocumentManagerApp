@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.sophos.documentmanager_app.R
 import com.sophos.documentmanager_app.ui.view.HomeView
+import com.sophos.documentmanager_app.ui.view.ShowDocumentsView
 
 class Routing {
     companion object {
@@ -17,7 +18,7 @@ class Routing {
 
 //                R.id.op_send_docs -> goTo(context, SendDocumentsFragment())
 
-//                R.id.op_see_docs -> goTo(context, DocumentsFragment())
+                R.id.op_see_docs -> goTo(context, ShowDocumentsView())
 
 //                R.id.op_office -> goTo(context, OfficeFragment())
 

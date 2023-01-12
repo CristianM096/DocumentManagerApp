@@ -31,9 +31,9 @@ class HomeView : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeViewBinding.inflate(inflater,container, false)
-//        _binding.btnSeeDocuments.setOnClickListener{
-//            Routing.goTo(activity as AppCompatActivity, ShowDocumentsView())
-//        }
+        _binding.btnSeeDocuments.setOnClickListener{
+            Routing.goTo(activity as AppCompatActivity, ShowDocumentsView())
+        }
 //        _binding.btnSendDocuments.setOnClickListener{
 //            Routing.goTo(activity as AppCompatActivity, SendDocumentsView())
 //        }

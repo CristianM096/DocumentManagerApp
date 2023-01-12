@@ -16,4 +16,7 @@
     <string name="show_documents">Show documentos</string>
     <string name="office">office</string>
     <string name="logout">Logout</string>
+
+    <string name="document">Document</string>
+    <string name="documents">Documents</string>
 </resources>

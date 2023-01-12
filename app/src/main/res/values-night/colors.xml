@@ -4,18 +4,18 @@
     <color name="primary_text_color">#3A275B</color>
     <color name="main_text_color">#FFF</color>
     <color name="login_text_color">#3A275B</color>
+    <color name="title_text_color">#FFFFFF</color>
+    <color name="loading_doc">#B3AAAAAA</color>
     <color name="first_card_color">#FE1191</color>
     <color name="first_card_text">#FFFF</color>
     <color name="first_card_fade_color">#B3FE1191</color>
     <color name="first_card_btn_color">#CCFE1191</color>
     <color name="first_card_bg">#CCFE1191</color>
-
     <color name="second_card_color">#4500FF</color>
     <color name="second_card_text">#FFFF</color>
     <color name="second_card_fade_color">#B34500FF</color>
     <color name="second_card_btn_color">#CC4500FF</color>
     <color name="second_card_bg">#B34500FF</color>
-
     <color name="third_card_color">#05667C</color>
     <color name="third_card_text">#FFFF</color>
     <color name="third_card_fade_color">#B305667C</color>
