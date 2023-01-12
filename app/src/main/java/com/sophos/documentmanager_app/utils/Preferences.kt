@@ -22,6 +22,18 @@ class Preferences (val context: Context){
     fun getUserEmail(): String {
         return storage.getString(Constants.SHARED_USER_EMAIL, "")!!
     }
+    fun storeThemeTitle(title: String) {
+        storage.edit().putString(Constants.MAIN_THEME_TITLE, title).apply()
+    }
+    fun getThemeTitle(): String {
+        return storage.getString(Constants.MAIN_THEME_TITLE, "Modo nocturno")!!
+    }
+    fun getLanguageTitle(): String {
+        return storage.getString(Constants.MAIN_LANGUAGE_TITLE, "Idioma ingles")!!
+    }
+    fun storeLanguageTitle(title: String) {
+        storage.edit().putString(Constants.MAIN_LANGUAGE_TITLE, title).apply()
+    }
     ///
 
 

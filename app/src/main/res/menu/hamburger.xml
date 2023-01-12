@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/hamburger"
+        android:title=""
+        android:id="@+id/main_menu"
+        >
+        <menu>
+            <item
+                android:id="@+id/op_send_docs"
+                android:title="@string/send_documents"
+                app:showAsAction="collapseActionView"
+                android:actionLayout="@layout/item_send_docs"
+                />
+
+            <item
+                android:id="@+id/op_see_docs"
+                android:title="@string/show_documents"
+                app:showAsAction="never"
+                />
+            <item
+                android:id="@+id/op_office"
+                android:title="@string/office"
+                app:showAsAction="never"
+                />
+            <item
+                android:id="@+id/op_theme"
+                android:title=""
+                app:showAsAction="never"
+                />
+            <item
+                android:id="@+id/op_language"
+                android:title=""
+                app:showAsAction="never"
+                />
+            <item
+                android:id="@+id/op_logout"
+                android:title="@string/logout"
+                app:showAsAction="never"
+                />
+        </menu>
+    </item>
+</menu>

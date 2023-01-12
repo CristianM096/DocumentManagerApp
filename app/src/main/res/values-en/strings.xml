@@ -15,4 +15,5 @@
     <string name="send_docs_text">Send docs</string>
     <string name="show_documents">Show documentos</string>
     <string name="office">office</string>
+    <string name="logout">Logout</string>
 </resources>

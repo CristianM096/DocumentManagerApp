@@ -15,4 +15,5 @@
     <string name="send_docs_text">Envio de documentación</string>
     <string name="show_documents">Ver documentos</string>
     <string name="office">Oficinas</string>
+    <string name="logout">Cerrar sesion</string>
 </resources>
