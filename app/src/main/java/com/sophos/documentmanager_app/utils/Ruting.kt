@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.sophos.documentmanager_app.R
+import com.sophos.documentmanager_app.ui.view.HomeView
 
 class Routing {
     companion object {
@@ -12,7 +13,7 @@ class Routing {
 
             return when (item.itemId) {
 
-//                android.R.id.home -> if (goBack) goBack(context) else goTo(context, MenuFragment())
+                android.R.id.home -> if (goBack) goBack(context) else goTo(context, HomeView())
 
 //                R.id.op_send_docs -> goTo(context, SendDocumentsFragment())
 
