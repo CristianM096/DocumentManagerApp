@@ -14,7 +14,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SendDocumentsView.newInstance] factory method to
+ * Use the [SendDocumentView.newInstance] factory method to
  * create an instance of this fragment.
  */
 class SendDocumentsView : Fragment() {
@@ -45,7 +45,7 @@ class SendDocumentsView : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SendDocumentsView.
+         * @return A new instance of fragment SendDocumentView.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
