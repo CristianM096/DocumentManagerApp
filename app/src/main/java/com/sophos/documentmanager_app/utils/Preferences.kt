@@ -34,6 +34,15 @@ class Preferences (val context: Context){
     fun storeLanguageTitle(title: String) {
         storage.edit().putString(Constants.MAIN_LANGUAGE_TITLE, title).apply()
     }
+    fun getLanguage(): String{
+        return storage.getString(Constants.MAIN_LANGUAGE, "es")!!
+    }
+    fun storeTheme(theme: String) {
+        storage.edit().putString(Constants.MAIN_THEME, theme).apply()
+    }
+    fun storeLanguage(language: String) {
+        storage.edit().putString(Constants.MAIN_LANGUAGE, language).apply()
+    }
     ///
 
 

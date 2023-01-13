@@ -8,14 +8,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.sophos.documentmanager_app.data.model.UserModel.UserModel
 import com.sophos.documentmanager_app.data.model.auth.Auth
-import com.sophos.documentmanager_app.data.network.service.UserService
+import com.sophos.documentmanager_app.data.network.service.user.UserService
 import com.sophos.documentmanager_app.utils.NonSuccessResponse
 import com.sophos.documentmanager_app.utils.UserApp.Companion.prefs
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback

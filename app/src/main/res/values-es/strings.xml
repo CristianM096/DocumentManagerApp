@@ -18,4 +18,5 @@
     <string name="logout">Cerrar sesion</string>
     <string name="document">Documento</string>
     <string name="documents">Documentos</string>
+    <string name="detail_document">Detalles de la imagen del Documento</string>
 </resources>

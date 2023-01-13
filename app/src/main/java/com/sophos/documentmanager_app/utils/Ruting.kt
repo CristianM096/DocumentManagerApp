@@ -6,27 +6,29 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.sophos.documentmanager_app.R
 import com.sophos.documentmanager_app.ui.view.HomeView
+import com.sophos.documentmanager_app.ui.view.OfficeView
+import com.sophos.documentmanager_app.ui.view.SendDocumentsView
 import com.sophos.documentmanager_app.ui.view.ShowDocumentsView
 
 class Routing {
     companion object {
-        fun navigation(context: AppCompatActivity, item: MenuItem, goBack: Boolean = false): Boolean {
+        fun navigations(context: AppCompatActivity, item: MenuItem, goBack: Boolean = false): Boolean {
 
             return when (item.itemId) {
 
                 android.R.id.home -> if (goBack) goBack(context) else goTo(context, HomeView())
 
-//                R.id.op_send_docs -> goTo(context, SendDocumentsFragment())
+                R.id.op_send_docs -> goTo(context, SendDocumentsView())
 
                 R.id.op_see_docs -> goTo(context, ShowDocumentsView())
 
-//                R.id.op_office -> goTo(context, OfficeFragment())
+                R.id.op_office -> goTo(context, OfficeView())
 
-//                R.id.op_theme -> ThemeTool.toggleTheme(context)
+                R.id.op_theme -> ThemeTool.toggleTheme(context)
 
-//                R.id.op_language -> LanguageTool.toggleLanguage(context)
+                R.id.op_language -> LanguageTool.toggleLanguage(context)
 
-//                R.id.op_logout -> logout(context)
+                R.id.op_logout -> logout(context)
 
                 else -> false
             }

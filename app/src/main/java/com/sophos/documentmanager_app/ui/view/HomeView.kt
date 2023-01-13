@@ -1,6 +1,5 @@
 package com.sophos.documentmanager_app.ui.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -8,20 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sophos.documentmanager_app.R
 import com.sophos.documentmanager_app.databinding.FragmentHomeViewBinding
 import com.sophos.documentmanager_app.utils.Routing
-import com.sophos.documentmanager_app.utils.Routing.Companion.navigation
 import com.sophos.documentmanager_app.utils.TopBar
 import com.sophos.documentmanager_app.utils.UserApp.Companion.prefs
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeView.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeView : Fragment() {
     private lateinit var _binding: FragmentHomeViewBinding
     private val binding get() = _binding
@@ -56,7 +45,7 @@ class HomeView : Fragment() {
 
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.hamburger, menu)
+        inflater.inflate(R.menu.navigation, menu)
         super.onCreateOptionsMenu(menu, inflater)
 
         val theme = prefs.getThemeTitle()
@@ -67,6 +56,6 @@ class HomeView : Fragment() {
     }
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return Routing.navigation(activity as AppCompatActivity, item)
+        return Routing.navigations(activity as AppCompatActivity, item)
     }
 }

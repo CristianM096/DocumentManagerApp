@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn
-class NetwotkModule {
+class NetworkModule {
     companion object{
         fun getRestEngine(): Retrofit {
             return Retrofit.Builder()

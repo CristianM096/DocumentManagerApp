@@ -1,4 +1,4 @@
-package com.sophos.documentmanager_app.data.network.service
+package com.sophos.documentmanager_app.data.network.service.user
 
 import android.provider.ContactsContract.CommonDataKinds.Email
 import com.sophos.documentmanager_app.data.model.UserModel.UserModel
