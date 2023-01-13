@@ -18,7 +18,5 @@
     <string name="document">Documento</string>
     <string name="documents">Documentos</string>
     <string name="detail_document">Detalles de la imagen del Documento</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="API_KEY">AIzaSyBt0wSRhMPQN0m4XAmP5KuU9-38WoBbt_8</string>
 </resources>

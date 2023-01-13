@@ -1,4 +1,4 @@
-package com.sophos.documentmanager_app.data.model.UserModel
+package com.sophos.documentmanager_app.data.model.user
 
 import com.google.gson.annotations.SerializedName
 

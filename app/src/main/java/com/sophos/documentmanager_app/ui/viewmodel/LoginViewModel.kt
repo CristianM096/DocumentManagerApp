@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sophos.documentmanager_app.data.model.UserModel.UserModel
+import com.sophos.documentmanager_app.data.model.user.UserModel
 import com.sophos.documentmanager_app.data.model.auth.Auth
 import com.sophos.documentmanager_app.data.network.service.user.UserService
 import com.sophos.documentmanager_app.utils.NonSuccessResponse
