@@ -1,60 +1,167 @@
 package com.sophos.documentmanager_app.ui.view
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.*
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import coil.load
 import com.sophos.documentmanager_app.R
+import com.sophos.documentmanager_app.databinding.FragmentSendDocumentsViewBinding
+import com.sophos.documentmanager_app.ui.viewmodel.SendDocumentsViewModel
+import com.sophos.documentmanager_app.utils.Constants
+import com.sophos.documentmanager_app.utils.Routing
+import com.sophos.documentmanager_app.utils.TopBar
+import com.sophos.documentmanager_app.utils.UserApp.Companion.prefs
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SendDocumentView.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SendDocumentsView : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var viewModel: SendDocumentsViewModel
+    private lateinit var _binding: FragmentSendDocumentsViewBinding
+    private val binding get() = _binding
+    private var encodedImage: String? = null
+    private lateinit var title: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_send_documents_view, container, false)
+    ): View {
+        viewModel = ViewModelProvider(this)[SendDocumentsViewModel::class.java]
+        _binding = FragmentSendDocumentsViewBinding.inflate(inflater, container, false )
+
+        val theme = prefs.getStoreTheme()
+        if(theme == Constants.LIGHT_THEME){
+            _binding.ivAddImage.setImageResource(R.drawable.add_photo)
+        }else{
+            _binding.ivAddImage.setImageResource(R.drawable.add_photo_dark)
+        }
+
+        setClickListener(activity as AppCompatActivity)
+        viewModel.getOffice()
+
+        val adapter =  ArrayAdapter(activity as AppCompatActivity, R.layout.documents_list, viewModel.documentsType)
+        binding.dropdownMenuDocument.setAdapter(adapter)
+
+        viewModel.mainCities.observe(viewLifecycleOwner){
+                cities -> run{
+            val cityAdapter =  ArrayAdapter(activity as AppCompatActivity, R.layout.documents_list, cities)
+            binding.dropdownMenuCities.setAdapter(cityAdapter)
+        }
+        }
+
+        viewModel.cameraAuth.observe(viewLifecycleOwner){
+                data -> run{
+            if(data!!.isAuth){
+                takeImage()
+            }
+        }
+        }
+
+        viewModel.galleryAuth.observe(viewLifecycleOwner){
+                data -> run{
+            if(data!!.isAuth){
+                selectImageFromGallery()
+            }
+        }
+        }
+
+        val email = prefs.getUserEmail()
+        _binding.itEmail.setText(email)
+
+        binding.btnSubmit.setOnClickListener {
+            val image = encodedImage.toString()
+            val description = _binding.itDescription.text.toString()
+            val documentType = _binding.dropdownMenuDocument.text.toString()
+            val documentId = _binding.itDocumentId.text.toString()
+            val name = _binding.itName.text.toString()
+            val lastname = _binding.itLastname.text.toString()
+            val city = _binding.dropdownMenuCities.text.toString()
+
+            viewModel.submitData(image, description, documentType, documentId, name, lastname, email, city, activity as AppCompatActivity)
+
+            _binding.itDescription.setText("")
+            _binding.ivAddImage.setImageDrawable(resources.getDrawable(R.drawable.add_photo))
+            _binding.dropdownMenuDocument.setText("")
+            _binding.itDocumentId.setText("")
+            _binding.itName.setText("")
+            _binding.itLastname.setText("")
+            _binding.dropdownMenuCities.setText("")
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SendDocumentView.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SendDocumentsView().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val toolbar = binding.toolbarContainer.toolbar
+        val language = prefs.getLanguage()
+        title = if (language == "en") "Back" else "Regresar"
+        TopBar()
+            .show(activity as AppCompatActivity,toolbar,title, true)
+
+    }
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.navigation, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val title = prefs.getThemeTitle()
+        menu.findItem(R.id.op_theme).title = title
+
+        val language = prefs.getLanguageTitle()
+        menu.findItem(R.id.op_language).title = language
+    }
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return Routing.navigations(activity as AppCompatActivity, item)
+    }
+    private fun takeImage(){
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, Constants.CAMERA_REQUEST_CODE)
+    }
+
+    private fun selectImageFromGallery(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, Constants.GALLERY_REQUEST_CODE)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val mActivity = activity
+
+        if(resultCode == Activity.RESULT_OK){
+            viewModel.imageAction(requestCode, data, mActivity).let{
+                    imageData -> run{
+
+                for(item in imageData){
+                    encodedImage = item.code64
+                    binding.ivAddImage.load(item.bitmap){
+                        crossfade(true)
+                        crossfade(1000)
+                    }
                 }
             }
+            }
+        }else{
+            Toast.makeText(mActivity, "NO ACTION", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setClickListener(context: AppCompatActivity){
+        binding.ivAddImage.setOnClickListener{viewModel.cameraCheckPermission(context)}
+        binding.btnAddDocument.setOnClickListener{viewModel.galleryCheckPermission(context)}
     }
 }

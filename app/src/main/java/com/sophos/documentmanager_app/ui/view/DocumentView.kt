@@ -43,7 +43,7 @@ class DocumentView : Fragment() {
 
         val toolbar = _binding.toolbarContainer.toolbar
         val language = prefs.getLanguage()
-        title = if (language == "en") "Go back" else "Regresar"
+        title = if (language == "en") "Back" else "Regresar"
         TopBar()
             .show(activity as AppCompatActivity, toolbar, title, true)
 
@@ -56,8 +56,6 @@ class DocumentView : Fragment() {
         }
         viewModel.getDetails(idRegister)
     }
-
-    // ------------------------- [OPTION MENU SETTINGS] ------------------------- //
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.navigation, menu)

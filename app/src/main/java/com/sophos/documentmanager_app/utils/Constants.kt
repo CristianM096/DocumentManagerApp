@@ -11,4 +11,6 @@ object Constants {
     const val ID_REGISTER: String = "idRegistro"
     const val LIGHT_THEME: String = "Modo dia"
     const val DARK_THEME: String = "Modo nocturno"
+    const val CAMERA_REQUEST_CODE: Int = 1
+    const val GALLERY_REQUEST_CODE: Int = 2
 }

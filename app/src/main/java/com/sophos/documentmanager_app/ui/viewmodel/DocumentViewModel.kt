@@ -41,7 +41,6 @@ class DocumentViewModel : ViewModel() {
                     NonSuccessResponse().message(response.code())
                 }
             }
-
             override fun onFailure(call: Call<DocumentsModel>, t: Throwable) {
                 call.cancel()
             }

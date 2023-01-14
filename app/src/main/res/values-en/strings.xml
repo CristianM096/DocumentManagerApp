@@ -11,13 +11,20 @@
     <string name="welcome_text">Welcome</string>
     <string name="options_text">These are the options \n we have for you</string>
     <string name="Entry">go</string>
-    <string name="send_documents">Enviar documentos</string>
+    <string name="send_documents">Send Documents</string>
     <string name="send_docs_text">Send docs</string>
-    <string name="show_documents">Show documentos</string>
-    <string name="office">office</string>
+    <string name="show_documents">Show documents</string>
+    <string name="office">Office</string>
     <string name="logout">Logout</string>
     <string name="document">Document</string>
     <string name="documents">Documents</string>
     <string name="detail_document">Detail Document Image</string>
     <string name="API_KEY">AIzaSyBDHLI68Y3b8yssbH4_NKYK-LACfwNAr2c</string>
+    <string name="description">Description</string>
+    <string name="type_document">Identification type</string>
+    <string name="document_number">Identification number</string>
+    <string name="names">Names</string>
+    <string name="last_names">Lastname</string>
+    <string name="city">City</string>
+    <string name="send">Send</string>
 </resources>

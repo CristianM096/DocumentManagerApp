@@ -95,6 +95,4 @@ class LoginViewModel  @Inject constructor(
             Toast.makeText(context,"First login with your credentials", Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }

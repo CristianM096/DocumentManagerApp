@@ -20,7 +20,7 @@
     <string name="detail_document">Detalles de la imagen del Documento</string>
     <string name="API_KEY">AIzaSyBt0wSRhMPQN0m4XAmP5KuU9-38WoBbt_8</string>
     <string name="description">Descripción</string>
-    <string name="type_document">Tipo de documento</string>
+    <string name="type_document">Tipo de Identificacion</string>
     <string name="document_number">Numero de documento</string>
     <string name="names">Nombres</string>
     <string name="last_names">Apellidos</string>

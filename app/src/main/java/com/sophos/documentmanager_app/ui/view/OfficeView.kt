@@ -33,7 +33,6 @@ class OfficeView : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentOfficeViewBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[OfficeViewModel::class.java]
 
@@ -45,7 +44,7 @@ class OfficeView : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
         val toolbar = binding.toolbarContainer.toolbar
         val language = prefs.getLanguage()
-        title = if (language == "en") "Go back" else "Regresar"
+        title = if (language == "en") "Back" else "Regresar"
         TopBar().show(activity as AppCompatActivity, toolbar, title, true)
     }
 

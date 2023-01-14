@@ -31,7 +31,6 @@ class LoginView : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         _binding = FragmentLoginViewBinding.inflate(inflater, container, false)

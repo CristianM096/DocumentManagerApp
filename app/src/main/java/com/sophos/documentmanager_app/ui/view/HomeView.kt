@@ -23,12 +23,12 @@ class HomeView : Fragment() {
         _binding.btnSeeDocuments.setOnClickListener{
             Routing.goTo(activity as AppCompatActivity, ShowDocumentsView())
         }
-//        _binding.btnSendDocuments.setOnClickListener{
-//            Routing.goTo(activity as AppCompatActivity, SendDocumentsView())
-//        }
-//        _binding.btnSendDocuments.setOnClickListener{
-//            Routing.goTo(activity as AppCompatActivity, OfficeView())
-//        }
+        _binding.btnSendDocuments.setOnClickListener{
+            Routing.goTo(activity as AppCompatActivity, SendDocumentsView())
+        }
+        _binding.btnOffice.setOnClickListener{
+            Routing.goTo(activity as AppCompatActivity, OfficeView())
+        }
     return binding.root
     }
 

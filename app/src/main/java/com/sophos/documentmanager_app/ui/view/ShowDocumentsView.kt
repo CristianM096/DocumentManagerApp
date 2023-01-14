@@ -1,7 +1,6 @@
 package com.sophos.documentmanager_app.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
